@@ -46,13 +46,13 @@
     "href": "posts/visualisation.html#using-index_col-and-header",
     "title": "Demonstration",
     "section": "Using index_col and header:",
-    "text": "Using index_col and header:\n#### Sets index and headers for better DataFrame structure.\n\ndf = pd.read_html(url, index_col=0)[1]\ndisplay(df.head())\n\n\n\n\n\n\n\nState or UT\nCensus 2011[2]\nNSO survey (2017)[3]\n\n\nState or UT\nAverage\nMale\nFemale\nAverage\nMale\nFemale\n\n\n\n\nIndia\n74.04\n82.14\n65.46\n77.7\n84.7\n70.3\n\n\nA&N islands[UT][citation needed]\n86.63\n90.27\n82.43\n86.27\n90.11\n81.84\n\n\nAndhra Pradesh\n67.02\n74.88\n59.15\n66.9\n80\n59.5\n\n\nArunachal Pradesh\n65.38\n72.55\n57.70\n66.95\n73.4\n59.50\n\n\nAssam\n72.19\n77.85\n66.27\n85.9\n90.1\n81.2\n\n\n\n\n\n\n\n Now “State or UT” is the index instead of a regular column.\n\ndf = pd.read_html(url, header=1)[1]\ndisplay(df.head())\n\n\n\n\n\n\n\n\nState or UT\nAverage\nMale\nFemale\nAverage.1\nMale.1\nFemale.1\n\n\n\n\n0\nIndia\n74.04\n82.14\n65.46\n77.7\n84.7\n70.3\n\n\n1\nA&N islands[UT][citation needed]\n86.63\n90.27\n82.43\n86.27\n90.11\n81.84\n\n\n2\nAndhra Pradesh\n67.02\n74.88\n59.15\n66.9\n80\n59.5\n\n\n3\nArunachal Pradesh\n65.38\n72.55\n57.70\n66.95\n73.4\n59.50\n\n\n4\nAssam\n72.19\n77.85\n66.27\n85.9\n90.1\n81.2"
+    "text": "Using index_col and header:\n\nSets index and headers for better DataFrame structure.\n\ndf = pd.read_html(url, index_col=0)[1]\ndisplay(df.head())\n\n\n\n\n\n\n\nState or UT\nCensus 2011[2]\nNSO survey (2017)[3]\n\n\nState or UT\nAverage\nMale\nFemale\nAverage\nMale\nFemale\n\n\n\n\nIndia\n74.04\n82.14\n65.46\n77.7\n84.7\n70.3\n\n\nA&N islands[UT][citation needed]\n86.63\n90.27\n82.43\n86.27\n90.11\n81.84\n\n\nAndhra Pradesh\n67.02\n74.88\n59.15\n66.9\n80\n59.5\n\n\nArunachal Pradesh\n65.38\n72.55\n57.70\n66.95\n73.4\n59.50\n\n\nAssam\n72.19\n77.85\n66.27\n85.9\n90.1\n81.2\n\n\n\n\n\n\n\n Now “State or UT” is the index instead of a regular column.\n\ndf = pd.read_html(url, header=1)[1]\ndisplay(df.head())\n\n\n\n\n\n\n\n\nState or UT\nAverage\nMale\nFemale\nAverage.1\nMale.1\nFemale.1\n\n\n\n\n0\nIndia\n74.04\n82.14\n65.46\n77.7\n84.7\n70.3\n\n\n1\nA&N islands[UT][citation needed]\n86.63\n90.27\n82.43\n86.27\n90.11\n81.84\n\n\n2\nAndhra Pradesh\n67.02\n74.88\n59.15\n66.9\n80\n59.5\n\n\n3\nArunachal Pradesh\n65.38\n72.55\n57.70\n66.95\n73.4\n59.50\n\n\n4\nAssam\n72.19\n77.85\n66.27\n85.9\n90.1\n81.2"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Reading HTML tables into pandas DataFrames",
     "section": "",
-    "text": "This is an Exposition Assignment under the course ES114: Probability, Statistics and Data Visualization. Created by group J041.\nGroup mates: - 1) Monika K (24110208) - 2) Bhuvi Kalarwal (24110076) - 3) Tanushree Deshmukh (24110366)"
+    "text": "This is an Exposition Assignment under the course ES114: Probability, Statistics and Data Visualization. Created by group J041.\nGroup mates: Monika K (24110208), Bhuvi Kalarwal (24110076) and Tanushree Deshmukh (24110366)"
   }
 ]
