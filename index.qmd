@@ -1,5 +1,5 @@
 ---
-title:Reading HTML tables into pandas DataFrames
+title: Reading HTML tables into pandas DataFrames
 ---
 
 This is an Exposition Assignment under the course ES114: Probability, Statistics and Data Visualization. Created by group J041. 
