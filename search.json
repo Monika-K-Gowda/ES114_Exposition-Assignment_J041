@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Pandas.read_html() Blog",
     "section": "",
-    "text": "Demonstration\n\n\n\n\n\n\nML\n\n\n\n\n\n\n\n\n\nFeb 25, 2025\n\n\nMonika K, Bhuvi Kalarwal, Tanushree Deshmukh\n\n\n\n\n\n\n\n\n\n\n\n\nReading HTML tables into pandas DataFrames\n\n\n\n\n\nThe blog explains how to use the pandas.read_html() function to read HTML tables into Pandas DataFrames. This function is incredibly useful for web scraping and data analysis.\n\n\n\n\n\nFeb 25, 2025\n\n\nMonika K, Bhuvi Kalarwal, Tanushree Deshmukh\n\n\n\n\n\n\nNo matching items"
+    "text": "Demonstration\n\n\n\n\n\n\n\n\n\n\n\nFeb 25, 2025\n\n\nMonika K, Bhuvi Kalarwal, Tanushree Deshmukh\n\n\n\n\n\n\n\n\n\n\n\n\nReading HTML tables into pandas DataFrames\n\n\n\n\n\nThe blog explains how to use the pandas.read_html() function to read HTML tables into Pandas DataFrames. This function is incredibly useful for web scraping and data analysis.\n\n\n\n\n\nFeb 25, 2025\n\n\nMonika K, Bhuvi Kalarwal, Tanushree Deshmukh\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome.html",
@@ -53,6 +53,6 @@
     "href": "index.html",
     "title": "Reading HTML tables into pandas DataFrames",
     "section": "",
-    "text": "This is an Exposition Assignment under the course ES114: Probability, Statistics and Data Visualization. Created by group J041.\nGroup mates: 1)Monika K (24110208) 2)Bhuvi Kalarwal (24110076) 3)Tanushree Deshmukh (24110366)"
+    "text": "This is an Exposition Assignment under the course ES114: Probability, Statistics and Data Visualization. Created by group J041.\nGroup mates: - 1) Monika K (24110208) - 2) Bhuvi Kalarwal (24110076) - 3) Tanushree Deshmukh (24110366)"
   }
 ]
