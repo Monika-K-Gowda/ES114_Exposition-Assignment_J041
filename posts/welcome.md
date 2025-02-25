@@ -1,5 +1,6 @@
 ---
 title: "Reading HTML tables into pandas DataFrames"
+
 description: "The blog explains how to use the pandas.read_html() function to read HTML tables into Pandas DataFrames. This function is incredibly useful for web scraping and data analysis."
 author: "Monika K, Bhuvi Kalarwal, Tanushree Deshmukh"
 date: "2/25/2025"
@@ -18,6 +19,7 @@ The Pandas library in python provides a very handy function for copying tables f
 1. io
 - It can be URL, file path, or HTML content.
 - Specifies where the HTML table is located.
+
 ```python
 pd.read_html(io=url)
 ```
