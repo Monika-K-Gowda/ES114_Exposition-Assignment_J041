@@ -1,5 +1,11 @@
 ---
-title: Quarto Template
+title:Reading HTML tables into pandas DataFrames
 ---
 
-Quarto template Text!
+This is an Exposition Assignment under the course ES114: Probability, Statistics and Data Visualization. Created by group J041. 
+
+
+Group mates:
+1)Monika K (24110208)
+2)Bhuvi Kalarwal (24110076)
+3)Tanushree Deshmukh (24110366)

@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Quarto Template"
+  title: "Reading HTML tables into pandas DataFrames"
   navbar:
     right:
       - href: index.qmd
