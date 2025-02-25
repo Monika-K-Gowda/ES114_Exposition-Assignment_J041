@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nipun Batra">
-<meta name="dcterms.date" content="2025-02-14">
+<meta name="author" content="Monika K, Bhuvi Kalarwal, Tanushree Deshmukh">
+<meta name="dcterms.date" content="2025-02-25">
 
-<title>Simple Visualisation – Quarto Template</title>
+<title>Demonstration – Reading HTML tables into pandas DataFrames</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-8e00f2f28a1266a720913de837032221.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e3acdd9b67e85dd7c39f851874d9197e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7cfa380d139a4d61a924487b0af32b39.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -114,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Quarto Template</span>
+    <span class="navbar-title">Reading HTML tables into pandas DataFrames</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -142,15 +145,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#function-for-reading-html-tables-into-pandas-dataframes" id="toc-function-for-reading-html-tables-into-pandas-dataframes" class="nav-link active" data-scroll-target="#function-for-reading-html-tables-into-pandas-dataframes">Function for reading HTML tables into pandas&nbsp;DataFrames</a>
+  <ul class="collapse">
+  <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage">Basic usage</a></li>
+  <li><a href="#demonstrating-some-features-of-pandas.read_html" id="toc-demonstrating-some-features-of-pandas.read_html" class="nav-link" data-scroll-target="#demonstrating-some-features-of-pandas.read_html">Demonstrating some features of pandas.read_html()</a></li>
+  <li><a href="#using-match" id="toc-using-match" class="nav-link" data-scroll-target="#using-match">Using match:</a></li>
+  <li><a href="#using-index_col-and-header" id="toc-using-index_col-and-header" class="nav-link" data-scroll-target="#using-index_col-and-header">Using index_col and header:</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Simple Visualisation</h1>
+<h1 class="title">Demonstration</h1>
   <div class="quarto-categories">
     <div class="quarto-category">ML</div>
   </div>
@@ -163,14 +178,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Nipun Batra </p>
+             <p>Monika K, Bhuvi Kalarwal, Tanushree Deshmukh </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 14, 2025</p>
+      <p class="date">February 25, 2025</p>
     </div>
   </div>
   
@@ -182,27 +197,602 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-1" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install lxml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: lxml in /home/codespace/.python/current/lib/python3.12/site-packages (5.3.1)
+
+[notice] A new release of pip is available: 24.3.1 -&gt; 25.0.1
+[notice] To update, run: pip install --upgrade pip
+Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
-<div id="cell-2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above installation may not be required for everyone, but a few versions do need them</p>
+<section id="function-for-reading-html-tables-into-pandas-dataframes" class="level1">
+<h1>Function for reading HTML tables into pandas&nbsp;DataFrames</h1>
+<section id="basic-usage" class="level2">
+<h2 class="anchored" data-anchor-id="basic-usage">Basic usage</h2>
+<section id="reading-html-tables" class="level4">
+<h4 class="anchored" data-anchor-id="reading-html-tables">Reading HTML tables</h4>
+<p>Let’s consider a Wikipedia page with multiple tables to understand the topic</p>
+<div id="cell-7" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_Indian_states_and_union_territories_by_literacy_rate'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_html(url)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>display(tables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>[    States and union territories of India ordered by
+ 0  Area Population GDP (per capita) Abbreviations...
+ 1                                                vte,
+                          State or UT Census 2011[2]                \
+                          State or UT        Average   Male Female   
+ 0                              India          74.04  82.14  65.46   
+ 1   A&amp;N islands[UT][citation needed]          86.63  90.27  82.43   
+ 2                     Andhra Pradesh          67.02  74.88  59.15   
+ 3                  Arunachal Pradesh          65.38  72.55  57.70   
+ 4                              Assam          72.19  77.85  66.27   
+ 5                              Bihar          61.80  71.20  51.50   
+ 6                       Chhattisgarh          70.28  80.27  60.24   
+ 7                     Chandigarh[UT]          86.05  89.99  81.19   
+ 8         Dadra and Nagar Haveli[UT]          76.34  85.17  64.32   
+ 9                    Daman &amp; Diu[UT]          87.10  91.54  79.55   
+ 10                         Delhi[UT]          86.21  90.94  80.76   
+ 11                               Goa          88.70  92.65  84.66   
+ 12                           Gujarat          78.03  85.75  69.68   
+ 13                           Haryana          75.55  84.06  65.94   
+ 14                  Himachal Pradesh          82.80  89.53  75.93   
+ 15                 Jammu and Kashmir          67.16  76.75  56.43   
+ 16                         Jharkhand          66.41  76.84  55.42   
+ 17                         Karnataka          75.36  82.47  68.08   
+ 18                            Kerala          94.00  96.11  91.07   
+ 19                   Lakshadweep[UT]          91.85  95.56  87.95   
+ 20                    Madhya Pradesh          69.32  78.73  59.24   
+ 21                       Maharashtra          82.34  88.38  75.87   
+ 22                           Manipur          76.94  83.58  70.26   
+ 23                          Meghalya          74.43  75.95  72.89   
+ 24                           Mizoram          91.33  93.35  89.27   
+ 25                          Nagaland          79.55  82.75  76.11   
+ 26                            Odisha          72.87  81.59  64.01   
+ 27                    Puducherry[UT]          85.85  91.26  80.67   
+ 28                            Punjab          75.84  80.44  70.73   
+ 29                         Rajasthan          66.11  79.19  52.12   
+ 30                            Sikkim          81.42  86.55  75.61   
+ 31                        Tamil Nadu          80.09  86.77  73.44   
+ 32                         Telangana              -      -      -   
+ 33                           Tripura          87.22  92.53  82.73   
+ 34                       Uttarakhand          78.82  87.40  70.01   
+ 35                     Uttar Pradesh          67.68  77.28  57.18   
+ 36                       West Bengal          76.36  81.69  70.54   
+ 
+    NSO survey (2017)[3]                
+                 Average   Male Female  
+ 0                  77.7   84.7   70.3  
+ 1                 86.27  90.11  81.84  
+ 2                  66.9     80   59.5  
+ 3                 66.95   73.4  59.50  
+ 4                  85.9   90.1   81.2  
+ 5                  70.9   79.7   60.5  
+ 6                  77.3   85.4   68.8  
+ 7                 86.43  90.54  81.38  
+ 8                 77.65  86.46  77.65  
+ 9                 87.07  91.48  87.07  
+ 10                88.70  82.40  93.70  
+ 11                 87.4  92.81  81.84  
+ 12                 82.4   89.5   74.8  
+ 13                 80.4   88.0   71.3  
+ 14                 86.6   92.9   80.5  
+ 15                 77.3   85.7   68.0  
+ 16                 74.3   83.0   64.7  
+ 17                 77.2   83.4   70.5  
+ 18                 96.2   97.4   95.2  
+ 19                92.28  96.11  88.25  
+ 20                 73.7   81.2   65.5  
+ 21                 84.8   90.7   78.4  
+ 22                79.85  86.49  73.17  
+ 23                75.48  77.17  73.78  
+ 24                91.58  93.72  89.40  
+ 25                80.11  83.29  80.11  
+ 26                 77.3   84.0   70.3  
+ 27                86.55  92.12  86.55  
+ 28                 83.7   88.5   78.5  
+ 29                 69.7   80.8   57.6  
+ 30                 82.2  87.29  76.43  
+ 31                 82.9   87.9   77.9  
+ 32                    -      -      -  
+ 33                87.75  92.18  83.15  
+ 34                 87.6   94.3   80.7  
+ 35                 73.0   81.8   63.4  
+ 36                80.50  84.80  76.10  ,
+                   State/UT   1951   1961   1971   1981   1991   2001   2011
+ 0              A&amp;N islands  30.30  40.07  51.15  63.19  73.02  81.30  86.63
+ 1           Andhra Pradesh      -  21.19  24.57  35.66  44.08  60.47  67.02
+ 2        Arunachal Pradesh      -   7.13  11.29  25.55  41.59  54.34  65.38
+ 3                    Assam  18.53  32.95  33.94      -  52.89  63.25  72.19
+ 4                    Bihar  13.49  21.95  23.17  32.32  37.49  47.00  61.80
+ 5               Chandigarh      -      -  70.43  74.80  77.81  81.94  86.05
+ 6             Chhattisgarh   9.41  18.14  24.08  32.63  42.91  64.66  70.28
+ 7   Dadra and Nagar Haveli      -      -  18.13  32.90  40.71  57.63  76.24
+ 8            Daman and Diu      -      -      -      -  71.20  78.18  87.10
+ 9                    Delhi      -  61.95  65.08  71.94  75.29  81.67  86.21
+ 10                     Goa  23.48  35.41  51.96  65.71  75.51  82.01  88.70
+ 11                 Gujarat  21.82  31.47  36.95  44.92  61.29  69.14  78.03
+ 12                 Haryana      -      -  25.71  37.13  55.85  67.91  75.55
+ 13        Himachal Pradesh      -      -      -      -  63.86  76.48  82.80
+ 14       Jammu and Kashmir      -  12.95  21.71  30.64      -  55.52  67.16
+ 15               Jharkhand  12.93  21.14  23.87  35.03  41.39  53.56  66.41
+ 16               Karnataka      -  29.80  36.83  46.21  56.04  66.06  75.36
+ 17                  Kerala  47.18  55.08  69.75  78.85  89.81  90.86  94.00
+ 18             Lakshadweep  15.23  27.15  51.76  68.42  81.78  86.66  91.85
+ 19          Madhya Pradesh  13.16  21.41  27.27  38.63  44.67  63.74  69.32
+ 20             Maharashtra  27.91  35.08  45.77  57.24  64.87  76.84  82.34
+ 21                 Manipur  12.57  36.04  38.47  49.66  59.89  70.50  76.94
+ 22                Meghalya      -  26.92  29.49  42.05  49.10  62.56  74.43
+ 23                 Mizoram  31.14  44.01  53.80  59.88  82.26  88.80  91.33
+ 24                Nagaland  10.52  21.95  33.78  50.28  61.65  66.59  79.55
+ 25                  Odisha  15.80  21.66  26.18  33.62  49.09  63.08  72.87
+ 26              Puducherry      -  43.65  53.38  65.14  74.74  81.24  85.85
+ 27                  Punjab      -      -  34.12  43.37  58.51  69.65  75.84
+ 28               Rajasthan    8.5  18.12  22.57  30.11  38.55  60.41  66.11
+ 29                  Sikkim      -      -  17.74  34.05  56.94  68.81  81.42
+ 30              Tamil Nadu      -  36.39  45.40  54.39  62.66  73.45  80.33
+ 31                 Tripura      -  20.24  30.98  50.10  60.44  73.19  87.22
+ 32           Uttar Pradesh  12.02  20.87  23.99  32.65  40.71  56.27  67.68
+ 33             Uttarakhand  18.93  18.05  33.26  46.06  57.75  71.62  78.82
+ 34             West Bengal  24.61  34.46  38.86  48.65  57.70  68.64  76.26
+ 35                   India  18.33  28.30  34.45  43.57  52.21  64.84  74.04,
+   Social Group Rural        Urban        Rural + Urban       
+   Social Group  Male Female  Male Female          Male Female
+ 0           ST  75.6   58.8  91.3   79.6          77.5   61.3
+ 1           SC  78.0   60.9  88.4   75.3          80.3   63.9
+ 2          OBC  81.7   64.2  91.1   80.5          84.4   68.9
+ 3       OTHERS  87.6   74.5  95.0   88.6          90.8   80.6
+ 4          ALL  81.5   65.0  92.2   82.8          84.7   70.3,
+   Social Group Rural        Urban        Rural + Urban       
+   Social Group  Male Female  Male Female          Male Female
+ 0        Hindu  81.8   64.5  93.4   83.8          85.1   70.0
+ 1       Muslim  77.4   64.8  85.8   75.6          80.6   68.8
+ 2    Christian  84.4   77.0  95.5   91.4          88.2   82.2
+ 3         Sikh  92.7   96.4  94.2   95.3          88.9   90.1
+ 4          ALL  81.5   65.0  92.2   82.8          84.7   70.0]</code></pre>
+</div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(tables))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'list'&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="converting-the-type-of-tables-into-dataframe-as-it-makes-performing-a-lot-of-operations-more-convenient" class="level4">
+<h4 class="anchored" data-anchor-id="converting-the-type-of-tables-into-dataframe-as-it-makes-performing-a-lot-of-operations-more-convenient">Converting the type of tables into DataFrame as it makes performing a lot of operations more convenient</h4>
+<div id="cell-10" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(tables[<span class="dv">1</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;</code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>display(tables[<span class="dv">1</span>].head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="visualisation_files/figure-html/cell-3-output-1.png" width="568" height="413" class="figure-img"></p>
-</figure>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">State or UT</th>
+<th colspan="3" data-quarto-table-cell-role="th" data-halign="left">Census 2011[2]</th>
+<th colspan="3" data-quarto-table-cell-role="th" data-halign="left">NSO survey (2017)[3]</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">State or UT</th>
+<th data-quarto-table-cell-role="th">Average</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Average</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>India</td>
+<td>74.04</td>
+<td>82.14</td>
+<td>65.46</td>
+<td>77.7</td>
+<td>84.7</td>
+<td>70.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>A&amp;N islands[UT][citation needed]</td>
+<td>86.63</td>
+<td>90.27</td>
+<td>82.43</td>
+<td>86.27</td>
+<td>90.11</td>
+<td>81.84</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Andhra Pradesh</td>
+<td>67.02</td>
+<td>74.88</td>
+<td>59.15</td>
+<td>66.9</td>
+<td>80</td>
+<td>59.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Arunachal Pradesh</td>
+<td>65.38</td>
+<td>72.55</td>
+<td>57.70</td>
+<td>66.95</td>
+<td>73.4</td>
+<td>59.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Assam</td>
+<td>72.19</td>
+<td>77.85</td>
+<td>66.27</td>
+<td>85.9</td>
+<td>90.1</td>
+<td>81.2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="demonstrating-some-features-of-pandas.read_html" class="level2">
+<h2 class="anchored" data-anchor-id="demonstrating-some-features-of-pandas.read_html">Demonstrating some features of pandas.read_html()</h2>
+</section>
+<section id="using-match" class="level2">
+<h2 class="anchored" data-anchor-id="using-match">Using match:</h2>
+<section id="filters-tables-by-matching-the-given-text.-its-useful-for-pages-with-multiple-tables." class="level4">
+<h4 class="anchored" data-anchor-id="filters-tables-by-matching-the-given-text.-its-useful-for-pages-with-multiple-tables.">Filters tables by matching the given text. It’s useful for pages with multiple tables.</h4>
+<div id="cell-15" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_html(url, match<span class="op">=</span><span class="st">'Social Group'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>display(tables[<span class="dv">0</span>].head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Social Group</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Rural</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Urban</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Rural + Urban</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Social Group</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ST</td>
+<td>75.6</td>
+<td>58.8</td>
+<td>91.3</td>
+<td>79.6</td>
+<td>77.5</td>
+<td>61.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>SC</td>
+<td>78.0</td>
+<td>60.9</td>
+<td>88.4</td>
+<td>75.3</td>
+<td>80.3</td>
+<td>63.9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>OBC</td>
+<td>81.7</td>
+<td>64.2</td>
+<td>91.1</td>
+<td>80.5</td>
+<td>84.4</td>
+<td>68.9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>OTHERS</td>
+<td>87.6</td>
+<td>74.5</td>
+<td>95.0</td>
+<td>88.6</td>
+<td>90.8</td>
+<td>80.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ALL</td>
+<td>81.5</td>
+<td>65.0</td>
+<td>92.2</td>
+<td>82.8</td>
+<td>84.7</td>
+<td>70.3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-16" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_html(url, match<span class="op">=</span><span class="st">'Social Group'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>display(tables[<span class="dv">1</span>].head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Social Group</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Rural</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Urban</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Rural + Urban</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Social Group</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Hindu</td>
+<td>81.8</td>
+<td>64.5</td>
+<td>93.4</td>
+<td>83.8</td>
+<td>85.1</td>
+<td>70.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Muslim</td>
+<td>77.4</td>
+<td>64.8</td>
+<td>85.8</td>
+<td>75.6</td>
+<td>80.6</td>
+<td>68.8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Christian</td>
+<td>84.4</td>
+<td>77.0</td>
+<td>95.5</td>
+<td>91.4</td>
+<td>88.2</td>
+<td>82.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Sikh</td>
+<td>92.7</td>
+<td>96.4</td>
+<td>94.2</td>
+<td>95.3</td>
+<td>88.9</td>
+<td>90.1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ALL</td>
+<td>81.5</td>
+<td>65.0</td>
+<td>92.2</td>
+<td>82.8</td>
+<td>84.7</td>
+<td>70.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="using-index_col-and-header" class="level2">
+<h2 class="anchored" data-anchor-id="using-index_col-and-header">Using index_col and header:</h2>
+<p>#### Sets index and headers for better DataFrame structure.</p>
+<div id="cell-19" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_html(url, index_col<span class="op">=</span><span class="dv">0</span>)[<span class="dv">1</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>display(df.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">State or UT</th>
+<th colspan="3" data-quarto-table-cell-role="th" data-halign="left">Census 2011[2]</th>
+<th colspan="3" data-quarto-table-cell-role="th" data-halign="left">NSO survey (2017)[3]</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">State or UT</th>
+<th data-quarto-table-cell-role="th">Average</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Average</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">India</td>
+<td>74.04</td>
+<td>82.14</td>
+<td>65.46</td>
+<td>77.7</td>
+<td>84.7</td>
+<td>70.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">A&amp;N islands[UT][citation needed]</td>
+<td>86.63</td>
+<td>90.27</td>
+<td>82.43</td>
+<td>86.27</td>
+<td>90.11</td>
+<td>81.84</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Andhra Pradesh</td>
+<td>67.02</td>
+<td>74.88</td>
+<td>59.15</td>
+<td>66.9</td>
+<td>80</td>
+<td>59.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Arunachal Pradesh</td>
+<td>65.38</td>
+<td>72.55</td>
+<td>57.70</td>
+<td>66.95</td>
+<td>73.4</td>
+<td>59.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Assam</td>
+<td>72.19</td>
+<td>77.85</td>
+<td>66.27</td>
+<td>85.9</td>
+<td>90.1</td>
+<td>81.2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><b> Now “State or UT” is the index instead of a regular column.</b></p>
+<div id="cell-21" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_html(url, header<span class="op">=</span><span class="dv">1</span>)[<span class="dv">1</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>display(df.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">State or UT</th>
+<th data-quarto-table-cell-role="th">Average</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Average.1</th>
+<th data-quarto-table-cell-role="th">Male.1</th>
+<th data-quarto-table-cell-role="th">Female.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>India</td>
+<td>74.04</td>
+<td>82.14</td>
+<td>65.46</td>
+<td>77.7</td>
+<td>84.7</td>
+<td>70.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>A&amp;N islands[UT][citation needed]</td>
+<td>86.63</td>
+<td>90.27</td>
+<td>82.43</td>
+<td>86.27</td>
+<td>90.11</td>
+<td>81.84</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Andhra Pradesh</td>
+<td>67.02</td>
+<td>74.88</td>
+<td>59.15</td>
+<td>66.9</td>
+<td>80</td>
+<td>59.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Arunachal Pradesh</td>
+<td>65.38</td>
+<td>72.55</td>
+<td>57.70</td>
+<td>66.95</td>
+<td>73.4</td>
+<td>59.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Assam</td>
+<td>72.19</td>
+<td>77.85</td>
+<td>66.27</td>
+<td>85.9</td>
+<td>90.1</td>
+<td>81.2</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

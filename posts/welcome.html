@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nipun Batra">
-<meta name="dcterms.date" content="2025-02-14">
-<meta name="description" content="Welcome Post">
+<meta name="author" content="Monika K, Bhuvi Kalarwal, Tanushree Deshmukh">
+<meta name="dcterms.date" content="2025-02-25">
+<meta name="description" content="The blog explains how to use the pandas.read_html() function to read HTML tables into Pandas DataFrames. This function is incredibly useful for web scraping and data analysis.">
 
-<title>Welcome – Quarto Template</title>
+<title>Reading HTML tables into pandas DataFrames</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-8e00f2f28a1266a720913de837032221.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e3acdd9b67e85dd7c39f851874d9197e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7cfa380d139a4d61a924487b0af32b39.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,35 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -144,7 +115,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Quarto Template</span>
+    <span class="navbar-title">Reading HTML tables into pandas DataFrames</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -178,12 +149,12 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome</h1>
+<h1 class="title">Reading HTML tables into pandas DataFrames</h1>
 </div>
 
 <div>
   <div class="description">
-    Welcome Post
+    The blog explains how to use the pandas.read_html() function to read HTML tables into Pandas DataFrames. This function is incredibly useful for web scraping and data analysis.
   </div>
 </div>
 
@@ -193,14 +164,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Nipun Batra </p>
+             <p>Monika K, Bhuvi Kalarwal, Tanushree Deshmukh </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 14, 2025</p>
+      <p class="date">February 25, 2025</p>
     </div>
   </div>
   
@@ -212,47 +183,93 @@ window.Quarto = {
 </header>
 
 
-<section id="welcome" class="level1">
-<h1>Welcome</h1>
-<p><strong>Hello world</strong>, this is my first blog post.</p>
-<p>I can write in markdown</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I can also write math equations:</p>
-<p><span class="math display">\[
-y = x^2
-\]</span></p>
-<p>I can create lists easily:</p>
-<ul>
-<li>One</li>
-<li>Two</li>
-</ul>
-<p>I can also create numbered lists:</p>
+<p><strong>Introduction</strong></p>
+<p>The Pandas library in python provides a very handy function for copying tables from websites: pandas.read_html(). It helps us in extracting tables from an HTML page and converting them to Pandas DataFrames, ready&nbsp;for&nbsp;analysis.</p>
+<p><strong>Key Features</strong></p>
 <ol type="1">
-<li>One</li>
-<li>Two</li>
+<li>io</li>
 </ol>
-<p>Or, create a table:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Age</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Alice</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>Bob</td>
-<td>21</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>It can be URL, file path, or HTML content.</li>
+<li>Specifies where the HTML table is located.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(io<span class="op">=</span>url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Match case</li>
+</ol>
+<ul>
+<li>Filters tables by matching text or a regular expression in the table’s HTML content.</li>
+<li>If there are multiple tables on a webpage, this helps find the one containing specific text.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, match<span class="op">=</span><span class="st">' '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Flavor</li>
+</ol>
+<ul>
+<li>Specifies the HTML parser to use.</li>
+<li>Used if the default parser fails, or if the webpage’s HTML is poorly structured</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, flavor<span class="op">=</span><span class="st">'lxml'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Header</li>
+</ol>
+<ul>
+<li>Specifies the row(s) to use as column headers.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, header<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Index_col</li>
+</ol>
+<ul>
+<li>Specifies the column(s) to use as the DataFrame index.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, index_col<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li>Skiprows</li>
+</ol>
+<ul>
+<li>Skips the specified number of rows before parsing headers.</li>
+<li>Useful for messy tables</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, skiprows<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="7" type="1">
+<li>Attrs</li>
+</ol>
+<ul>
+<li>Filters tables by their HTML attributes (like id, class).</li>
+<li>Handy when multiple tables exist.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, attrs<span class="op">=</span>{<span class="st">'class'</span>: <span class="st">' '</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="8" type="1">
+<li>Parse_dates</li>
+</ol>
+<ul>
+<li>Converts columns to datetime format</li>
+<li>Useful for tables with date columns.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, parse_dates<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="9" type="1">
+<li>Converters</li>
+</ol>
+<ul>
+<li>It is a dictonary of column converters.</li>
+<li>Applies custom functions to columns.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>converters <span class="op">=</span> {<span class="dv">2</span>: <span class="kw">lambda</span> x: x.strip(<span class="st">'%'</span>)}</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, converters<span class="op">=</span>converters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="10" type="1">
+<li>na_values</li>
+</ol>
+<ul>
+<li>Specifies strings to recognize as NaN.</li>
+<li>Customizes missing value representations.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pd.read_html(url, na_values<span class="op">=</span>[<span class="st">'N/A'</span>, <span class="st">'-'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For further reading refer to https://pandas.pydata.org/docs/reference/api/pandas.read_html.html#pandas.read_html</p>
+<p><strong>Conclusion</strong></p>
+<p>With above mentioned ways we can extract tables from websites using pandas.read_html(). By using its features, it becomes a quite useful tool for tasks such as research, data analysis and financial reporting. Its flexibility and ease make it a useful tool for anyone dealing&nbsp;with&nbsp;web&nbsp;data.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

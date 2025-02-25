@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quarto Blog – Quarto Template</title>
+<title>Pandas.read_html() Blog – Reading HTML tables into pandas DataFrames</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-8e00f2f28a1266a720913de837032221.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e3acdd9b67e85dd7c39f851874d9197e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7cfa380d139a4d61a924487b0af32b39.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -138,7 +138,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Quarto Template</span>
+    <span class="navbar-title">Reading HTML tables into pandas DataFrames</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -174,7 +174,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quarto Blog</h1>
+<h1 class="title">Pandas.read_html() Blog</h1>
 </div>
 
 
@@ -197,43 +197,15 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1739491200000" data-listing-file-modified-sort="1740490681315" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="53">
-<div class="thumbnail">
-<p><a href="./posts/welcome.html" class="no-external"></a></p><a href="./posts/welcome.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/welcome.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome.html" class="no-external">Welcome</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/welcome.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/welcome.html" class="no-external">Welcome Post</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/welcome.html" class="no-external">
-<div class="listing-date">
-Feb 14, 2025
-</div>
-<div class="listing-author">
-Nipun Batra
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="TUw=" data-listing-date-sort="1739491200000" data-listing-file-modified-sort="1740490681315" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="0" data-categories="TUw=" data-listing-date-sort="1740441600000" data-listing-file-modified-sort="1740496430231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="97">
 <div class="thumbnail">
 <p><a href="./posts/visualisation.html" class="no-external"></a></p><a href="./posts/visualisation.html" class="no-external">
-<p class="card-img-top"><img src="posts/visualisation_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p>
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 </a><p><a href="./posts/visualisation.html" class="no-external"></a></p>
 </div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/visualisation.html" class="no-external">Simple Visualisation</a>
+<a href="./posts/visualisation.html" class="no-external">Demonstration</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./posts/visualisation.html" class="no-external"></a>
@@ -244,21 +216,44 @@ ML
 </div>
 </div>
 <div class="listing-description">
-<a href="./posts/visualisation.html" class="no-external">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><span class="op">%</span>matplotlib inline</span>
-<span id="cb1-4"><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code></pre></div>
-</a>
+<a href="./posts/visualisation.html" class="no-external">The above installation may not be required for everyone, but a few versions do need them</a>
 </div>
 </div>
 <div class="metadata">
 <a href="./posts/visualisation.html" class="no-external">
 <div class="listing-date">
-Feb 14, 2025
+Feb 25, 2025
 </div>
 <div class="listing-author">
-Nipun Batra
+Monika K, Bhuvi Kalarwal, Tanushree Deshmukh
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1740441600000" data-listing-file-modified-sort="1740496430232" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="256">
+<div class="thumbnail">
+<p><a href="./posts/welcome.html" class="no-external"></a></p><a href="./posts/welcome.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/welcome.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/welcome.html" class="no-external">Reading HTML tables into pandas DataFrames</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/welcome.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/welcome.html" class="no-external">The blog explains how to use the pandas.read_html() function to read HTML tables into Pandas DataFrames. This function is incredibly useful for web scraping and data analysis.</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/welcome.html" class="no-external">
+<div class="listing-date">
+Feb 25, 2025
+</div>
+<div class="listing-author">
+Monika K, Bhuvi Kalarwal, Tanushree Deshmukh
 </div>
 </a>
 </div>
